@@ -95,7 +95,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4">
             <div>
                 <h3 class="text-2xl font-bold mb-3">Address</h3>
-                <p>Narayani Resort, Gaidakot</p>
+                <p>Narayani Resort, Gaindakot</p>
             </div>
             <div>
                 <h3 class="text-2xl font-bold mb-3">Sales</h3>

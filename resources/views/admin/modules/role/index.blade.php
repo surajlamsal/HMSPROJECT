@@ -31,7 +31,7 @@
                                 <h3 class="card-title"></h3>
 
                                 <h3 style="float:right;" class="card-title"><a href="{{ route('role.create')
-                                }}">Add</a></h3>
+                                }}"class="btn btn-success  btn-sm">Add</a></h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

@@ -30,7 +30,7 @@
                                 <h3 class="card-title"></h3>
                                 @can('shift-create')
                                     <h3 style="float:right;" class="card-title"><a
-                                            href="{{ route('shift.create') }}">Add</a>
+                                            href="{{ route('shift.create') }}"class="btn btn-success  btn-sm">Add</a>
                                     </h3>
                                 @endcan
 

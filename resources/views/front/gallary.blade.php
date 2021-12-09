@@ -13,7 +13,11 @@
                     <img src="images/home/2.jpg" class="w-full h-full object-cover" alt="">
                     <img src="images/home/3.jpg" class="w-full h-full object-cover" alt="">
                     <img src="images/home/4.jpg" class="w-full h-full object-cover" alt="">
-                    <img src="images/home/1.jpg" class="w-full h-full object-cover" alt="">
+                    <img src="images/home/5.jpg" class="w-full h-full object-cover" alt="">
+                    <img src="images/home/6.jpg" class="w-full h-full object-cover" alt="">
+                    <img src="images/home/7.jpg" class="w-full h-full object-cover" alt="">
+                    <img src="images/home/8.jpeg" class="w-full h-full object-cover" alt="">
+                    <img src="images/home/9.jpg" class="w-full h-full object-cover" alt="">
                 </div>
             </div>
         </div>

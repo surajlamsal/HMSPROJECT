@@ -10,10 +10,10 @@
                 <div class="prose prose-lg mx-auto">
 
                     <!-- CONTACT DETAILS HERE -->
-                    <h3>Hotel Name</h3>
-                    <h4>Address</h4>
-                    <p><b>Phone:</b> 12312312</p>
-                    <p><b>Email:</b> asa@gmail.com</p>
+                    <p><b>Hotel Name:</b> Narayani Resort</p>
+                    <p><b>Adress:</b> Gaindakot-02</p>
+                    <p><b>Phone:</b> 9807552601,9847285295</p>
+                    <p><b>Email:</b> NarayaniResort@gmail.com</p>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@
                                 <h3 class="card-title"></h3>
                                 @can('floor-create')
                                     <h3 style="float:right;" class="card-title"><a
-                                            href="{{ route('floor.create') }}">Add</a></h3>
+                                            href="{{ route('floor.create') }}" class="btn btn-success  btn-sm">Add</a></h3>
                                 @endcan
                             </div>
                             <!-- /.card-header -->

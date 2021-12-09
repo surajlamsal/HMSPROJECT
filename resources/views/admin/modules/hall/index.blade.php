@@ -30,7 +30,7 @@
                             <div class="card-header">
                                 <h3 class="card-title"></h3>
 
-                                <h3 style="float:right;" class="card-title"><a href="{{ route('halltype.create') }}">Add</a></h3>
+                                <h3 style="float:right;" class="card-title"><a href="{{ route('halltype.create') }}"class="btn btn-success  btn-sm">Add</a></h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

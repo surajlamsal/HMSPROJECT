@@ -28,11 +28,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 style="float:right;" class="card-title"><a href="{{url('/archived')}}">Go to
+                                <h3 style="float:right;" class="card-title"><a href="{{url('/archived')}}" class="btn btn-warning  btn-sm ">Go to
                                                                                                            archive</a>
-                                </h3><br>
+                                </h3>
                                 @can('guest-create')
-                                    <h3 style="float:right;" class="card-title"><a href="{{route('guest.create')}}">Add
+                                    <h3 style="float:right;" class="card-title"><a href="{{route('guest.create')}}" class="btn btn-success  btn-sm">Add
                                                                                                                     Guest</a>
                                     </h3>
                                     <i class="fa-solid fa-pen-to-square"></i>

@@ -31,7 +31,7 @@
                                 <h3 class="card-title"></h3>
                                 @can('amenities-create')
                                     <h3 style="float:right;" class="card-title"><a
-                                            href="{{ route('amenities.create') }}">Add</a>
+                                            href="{{ route('amenities.create') }}"class="btn btn-success  btn-sm">Add</a>
                                     </h3>
                                 @endcan
                             </div>

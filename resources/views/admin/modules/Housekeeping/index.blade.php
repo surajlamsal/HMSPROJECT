@@ -33,7 +33,7 @@
                                 <h3 style="float:right;" class="card-title">
                                     @can('housekeeping-create')
                                         <h3 style="float:right;" class="card-title"><a
-                                                href="{{ route('housekeeping.create') }}">Add</a>
+                                                href="{{ route('housekeeping.create') }}"class="btn btn-success  btn-sm">Add</a>
                                         </h3>
                                 @endcan
 {{--                                    <a href="{{url('/addhousekeeping')}}">Add</a></h3>--}}
