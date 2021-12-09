@@ -42,54 +42,48 @@
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                    <label for="">Guest name:</label>
-                                    <input type="text" class="form-control" name="guestname" placeholder="Enter Guest name">
+                                        <label for="">Guest name:</label>
+                                        <input type="text" class="form-control" name="guestname"
+                                               placeholder="Enter Guest name">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="">Address:</label>
-                                    <input type="text" class="form-control" name="address" placeholder="Enter your Address">
+                                        <label for="">Address:</label>
+                                        <input type="text" class="form-control" name="address"
+                                               placeholder="Enter your Address">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="">Email:</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Enter your email">
-                                      </div>
-
-                                    <div class="form-group">
-                                     <label for="">Phone:</label>
-                                       <input type="number" class="form-control" name="phone" placeholder="Enter phone number">
+                                        <label for="">Email:</label>
+                                        <input type="email" class="form-control" name="email"
+                                               placeholder="Enter your email">
                                     </div>
 
                                     <div class="form-group">
-                                     <label for="">Citizenship Id:</label>
-                                       <input type="tel" class="form-control" name="citizenship" placeholder="Enter citizenship">
+                                        <label for="">Phone:</label>
+                                        <input type="number" class="form-control" name="phone"
+                                               placeholder="Enter phone number">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="">Organizaion:</label>
-                                    <input type="text" class="form-control" name="organization" placeholder=" Enter organization">
+                                        <label for="">Citizenship Id:</label>
+                                        <input type="tel" class="form-control" name="citizenship"
+                                               placeholder="Enter citizenship">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="">Room no:</label>
-                                    <input type="number" class="form-control" name="roomno" placeholder="Enter room no">
+                                        <label for="">Organizaion:</label>
+                                        <input type="text" class="form-control" name="organization"
+                                               placeholder=" Enter organization">
                                     </div>
 
-                                    <div class="form-group">
-                                    <label for="">Arrived from:</label>
-                                    <input type="text" class="form-control" name="arrival">
-                                    </div>
 
                                     <div class="form-group">
-                                    <label for="">Checked in:</label>
-                                    <input type="date" class="form-control" name="checkin">
+                                        <label for="">Arrived from:</label>
+                                        <input type="text" class="form-control" name="arrival">
                                     </div>
 
-                                    <div class="form-group">
-                                    <label for="">Checked out:</label>
-                                    <input type="date" class="form-control" name="checkout">
-                                    </div>
+
                                 </div>
                                 <!-- /.card-body -->
 

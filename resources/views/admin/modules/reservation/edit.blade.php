@@ -1,16 +1,12 @@
 @extends("admin.layouts.master")
 @section("content")
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Reservation</h1>
+                        <h1>Floor</h1>
                     </div>
-                    @if(session('status'))
-
-                    @endif
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
@@ -18,7 +14,7 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
         <!-- Main content -->
         <section class="content">
@@ -46,10 +42,14 @@
                                         <select class="form-control" id="guest_id" name="guest_id">
                                             @foreach($guest as $items)
                                                 <option {{($items->id == $reservation->guest_id)?("selected"):("")}}
-                                                        value="{{$items->id}}">{{$items->guestname}}</option>
+                                                             value="{{$items->id}}">{{$items->guestname}}</option>
                                             @endforeach
                                         </select>
                                     </div>
+                                    <?php
+                                    $startdate = date("Y-m-d", strtotime("$reservation->start"));
+                                    $enddate = date("Y-m-d", strtotime("$reservation->end -1 days"));
+                                    ?>
                                     <div class="form-group">
                                         <label for="room_id">Select Room</label>
                                         {{--for loop lagouni--}}
@@ -61,23 +61,27 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="in_date">CheckIn Date:</label>
-                                        <input value="{{$reservation->in_date}}" type="date" class="form-control" id="in_date" name="in_date"
-                                               placeholder="Enter Check in_date">
+                                        <label for="start">CheckIn Date:</label>
+                                        <input value="{{$startdate}}" type="date" class="form-control"
+                                               id="start" name="start"
+                                               placeholder="Enter Check start">
                                     </div>
                                     <div class="form-group">
-                                        <label for="out_date">CheckOut Date:</label>
-                                        <input value="{{$reservation->out_date}}"  type="date" class="form-control" id="out_date" name="out_date"
-                                               placeholder="Enter Check out_date">
+                                        <label for="end">CheckOut Date:</label>
+                                        <input value="{{$enddate}}" type="date" class="form-control"
+                                               id="end" name="end"
+                                               placeholder="Enter Check end">
                                     </div>
                                     <div class="form-group">
                                         <label for="numberofguests">Number Of Guests:</label>
-                                        <input value="{{$reservation->numberofguests}}"  type="text" class="form-control" id="numberofguests"
+                                        <input value="{{$reservation->numberofguests}}" type="text" class="form-control"
+                                               id="numberofguests"
                                                name="numberofguests" placeholder="Enter  numberofguests">
                                     </div>
                                     <div class="form-group">
                                         <label for="price">Price:</label>
-                                        <input value="{{$reservation->price}}"  type="text" class="form-control" id="price" name="price"
+                                        <input value="{{$reservation->price}}" type="text" class="form-control"
+                                               id="price" name="price"
                                                placeholder="Enter  price">
                                     </div>
                                 </div>
@@ -89,13 +93,13 @@
                         </div>
                         <!-- /.card -->
                     </div>
+                </div>
                     <!--/.col (left) -->
                     <!-- right column -->
                     <!--/.col (right) -->
                 </div>
                 <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-    </div>
 @endsection

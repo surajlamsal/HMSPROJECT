@@ -7,15 +7,8 @@
 
     class FullCalenderController extends Controller
     {
-
-        /**
-         * Write code on Method
-         *
-         * @return response()
-         */
         public function index (Request $request)
         {
-
 
             if ($request->ajax()) {
 
@@ -27,15 +20,8 @@
 
             }
             return view('admin.modules.calendar.fullcalender');
-
         }
 
-
-        /**
-         * Write code on Method
-         *
-         * @return response()
-         */
         public function ajax (Request $request)
         {
 

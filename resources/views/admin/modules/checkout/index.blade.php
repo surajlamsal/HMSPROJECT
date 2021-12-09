@@ -21,6 +21,7 @@
     @if(session('status'))
 
     @endif
+
     <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -49,11 +50,15 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($checkout as $item)
+                                        <?php
+                                        $startdate = date("Y-m-d", strtotime("$item->start"));
+                                        $enddate = date("Y-m-d", strtotime("$item->end -1 days"));
+                                        ?>
                                         <tr>
                                             <td>{{$item->reservation_guest->guestname}}</td>
                                             <td>{{$item->reservation_room->roomno}}</td>
-                                            <td>{{$item->in_date}}</td>
-                                            <td>{{$item->out_date}}</td>
+                                            <td>{{$startdate}}</td>
+                                            <td>{{$enddate}}</td>
                                             <td>{{$item->numberofguests}}</td>
                                             <td>{{$item->price}}</td>
                                         </tr>

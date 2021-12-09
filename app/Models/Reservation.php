@@ -14,8 +14,8 @@
         protected $fillable = [
             'guest_id',
             'room_id',
-            'in_date',
-            'out_date',
+            'start',
+            'end',
             'numberofguests',
             'price',
             'checkOutFlag',

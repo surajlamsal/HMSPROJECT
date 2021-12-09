@@ -1,43 +1,37 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Models\Guest;
-use App\Models\Reservation;
-use App\Models\Room;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+    use App\Models\Reservation;
 
-class CheckoutController extends Controller
-{
-    public function __construct()
+    class CheckoutController extends Controller
     {
-        $this->middleware('permission:checkout-list', ['only' => ['index']]);
+        public function __construct ()
+        {
+            $this->middleware('permission:checkout-list', ['only' => ['index']]);
 //        $this->middleware('permission:reservation-create', ['only' => ['create', 'store']]);
 //        $this->middleware('permission:reservation-edit', ['only' => ['edit', 'update']]);
 //        $this->middleware('permission:reservation-delete', ['only' => ['destroy']]);
-    }
+        }
 
-    public function index()
-    {
-        $checkout = Reservation::select('*')
-            ->where([
-                ['deletedstatus', '=', '0'],
-                ['checkOutFlag', '=', 'YES'],
-            ])
-            ->with('reservation_guest')
-            ->whereHas('reservation_guest', function ($sub) {
-                $sub->select('guestname');
-            })
-            ->with('reservation_room')
-            ->whereHas('reservation_room', function ($sub) {
-                $sub->select('roomno');
-            })
-            ->get();
-        return view('admin.modules.checkout.index', compact('checkout'));
-    }
+        public function index ()
+        {
+            $checkout = Reservation::select('*')
+                                   ->where([
+                                               ['deletedstatus', '=', '0'],
+                                               ['checkOutFlag', '=', 'YES'],
+                                           ])
+                                   ->with('reservation_guest')
+                                   ->whereHas('reservation_guest', function ($sub) {
+                                       $sub->select('guestname');
+                                   })
+                                   ->with('reservation_room')
+                                   ->whereHas('reservation_room', function ($sub) {
+                                       $sub->select('roomno');
+                                   })
+                                   ->get();
+            return view('admin.modules.checkout.index', compact('checkout'));
+        }
 
 //    public function create ()
 //    {
@@ -60,8 +54,8 @@ class CheckoutController extends Controller
 //        $reservation = new Reservation;
 //        $reservation->guest_id = $request->input('guest_id');
 //        $reservation->room_id = $request->input('room_id');
-//        $reservation->in_date = $request->input('in_date');
-//        $reservation->out_date = $request->input('out_date');
+//        $reservation->start = $request->input('start');
+//        $reservation->end = $request->input('end');
 //        $reservation->numberofguests = $request->input('numberofguests');
 //        $reservation->price = $request->input('price');
 //        $room = Room::find($reservation->room_id);
@@ -84,8 +78,8 @@ class CheckoutController extends Controller
 //            ])
 //            ->get();
 //        $reservation = Reservation::find($id);
-//        $reservation->in_date = date('Y-m-d', strtotime($reservation->in_date));
-//        $reservation->out_date = date('Y-m-d', strtotime($reservation->out_date));
+//        $reservation->start = date('Y-m-d', strtotime($reservation->start));
+//        $reservation->end = date('Y-m-d', strtotime($reservation->end));
 //        return view('admin.modules.reservation.edit', compact('reservation', 'guest', 'room'));
 //    }
 //
@@ -98,8 +92,8 @@ class CheckoutController extends Controller
 //        $room->update();
 //        $reservation->guest_id = $request->input('guest_id');
 //        $reservation->room_id = $request->input('room_id');
-//        $reservation->in_date = $request->input('in_date');
-//        $reservation->out_date = $request->input('out_date');
+//        $reservation->start = $request->input('start');
+//        $reservation->end = $request->input('end');
 //        $reservation->numberofguests = $request->input('numberofguests');
 //        $reservation->price = $request->input('price');
 //        $room = Room::find($reservation->room_id);
@@ -139,4 +133,4 @@ class CheckoutController extends Controller
 //        $reservations->deletedstatus = "1";
 //        $reservations->update();
 //    }
-}
+	}

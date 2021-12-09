@@ -1,6 +1,6 @@
 @extends("admin.layouts.master")
 @section("content")
-     <title>Archived</title>
+    <title>Archived</title>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -18,7 +18,7 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        @if(session('status'))
+    @if(session('status'))
 
     @endif
     <!-- Main content -->
@@ -29,32 +29,29 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
-                            <h3 style="float:right;" class="card-title"><a href="{{url('/guest')}}">Guest</a></h3><br>
+                                <h3 style="float:right;" class="card-title"><a href="{{url('/guest')}}">Guest</a></h3>
+                                <br>
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
 
-                                        <th>Guest Name</th>
-                                        <th>Phone No</th>
-                                        <th>Room No</th>
-                                        <th>Checked Out</th>
-                                        <th>Restore</th>
-                                        <th>Delete</th>
+                                    <th>Guest Name</th>
+                                    <th>Phone No</th>
+                                    <th>Restore</th>
+                                    <th>Delete</th>
                                     </thead>
                                     <tbody>
                                     @foreach ($guest as $item)
                                         <tr>
                                             <td>{{$item->guestname}}</td>
                                             <td>{{$item->phone}}</td>
-                                            <td>{{$item->roomno}}</td>
-                                            <td>{{$item->checkout}}</td>
                                             <td>
-                                              <a href="{{url('restore/'.$item->id)}}"
+                                                <a href="{{url('restore/'.$item->id)}}"
                                                    class="btn btn-primary  btn-sm">Restore</a>
-                                             </td>
-                                              <td>
+                                            </td>
+                                            <td>
                                                 <a href="{{url('force-delete/'.$item->id)}}"
                                                    class="btn btn-danger  btn-sm">Delete</a>
-                                             </td>
+                                            </td>
 
                                         </tr>
                                     @endforeach

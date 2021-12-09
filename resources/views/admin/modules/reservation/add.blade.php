@@ -43,7 +43,7 @@
                                         <select class="form-control" id="guest_id" name="guest_id">
                                             <option value="">Select Guest</option>
 
-                                        @foreach($guest as $items)
+                                            @foreach($guest as $items)
                                                 <option value="{{$items->id}}">{{$items->guestname}}</option>
                                             @endforeach
                                         </select>
@@ -51,22 +51,25 @@
                                     <div class="form-group">
                                         <label for="room_id">Select Room</label>
                                         {{--for loop lagouni--}}
-                                        <select class="form-control" id="room_id" name="room_id">
+                                        <select class="form-control room_idroom_id" id="room_id" name="room_id">
                                             <option value="">Select Room</option>
                                             @foreach($room as $items)
-                                                <option value="{{$items->id}}">{{$items->roomno}}</option>
+                                                <option
+                                                    value="{{$items->id}}"
+                                                    @if(!empty(request()->room_id) && request()->room_id == $items->id) selected @endif
+                                                >{{$items->roomno}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="in_date">CheckIn Date:</label>
-                                        <input type="date" class="form-control" id="in_date" name="in_date"
-                                               placeholder="Enter Check in_date">
+                                        <label for="start">CheckIn Date:</label>
+                                        <input type="date" class="form-control" id="start" name="start"
+                                               placeholder="Enter Check start" value="{{ request()->start ?? '' }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="out_date">CheckOut Date:</label>
-                                        <input type="date" class="form-control" id="out_date" name="out_date"
-                                               placeholder="Enter Check out_date">
+                                        <label for="end">CheckOut Date:</label>
+                                        <input type="date" class="form-control" id="end" name="end"
+                                               placeholder="Enter Check end" value="{{ request()->end ?? '' }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="numberofguests">Number Of Guests:</label>

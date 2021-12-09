@@ -394,16 +394,26 @@
                     @endif
 
 
-                    @can('fullcalender-list')
+                    @can('reservationcalendar-list')
 
 
                         <li class="nav-item">
-                            <a href="{{url('/fullcalender')}}" class="nav-link">
+                            <a href="{{url('/reservationcalendar')}}" class="nav-link">
                                 <i class="far fa-calendar-alt"></i>
-                                <p>Availability Calender</p>
+                                <p>Reservation Calender</p>
                             </a>
                         </li>
                     @endcan
+
+
+
+                        <li class="nav-item">
+                            <a href="{{url('/find-rooms')}}" class="nav-link">
+                                <i class="fas fa-arrows-alt"></i>
+                                <p>Find Room</p>
+                            </a>
+                        </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

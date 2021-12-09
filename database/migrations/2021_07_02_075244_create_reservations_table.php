@@ -17,8 +17,8 @@
                 $table->id();
                 $table->integer('guest_id');
                 $table->integer('room_id');
-                $table->datetime('in_date');
-                $table->datetime('out_date');
+                $table->datetime('start');
+                $table->datetime('end');
                 $table->integer('numberofguests');
                 $table->integer('price');
                 $table->timestamps();

@@ -130,6 +130,7 @@
     }
 
     jQuery(function () {
+
         let toastMessage = "{{Session::get('operationMessage')}}";
         let Toast = Swal.mixin({
             toast: true,
@@ -181,6 +182,24 @@
     });
     let toastMessage = "{{Session::put('operationMessage', '')}}";
 </script>
+{{--<script>
+    /*$(document).ready(function(){
+
+        $(".room_idroom_id").on('change', function(){
+            var room_idroom_id=$(this).val();
+            alert(room_idroom_id);
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                {{--url:"{{ /*route('reservationroomdetailajax')*/ }}",--}}
+                method:"POST",
+                data:{room_idroom_id:room_idroom_id, _token:_token},
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        });
+    });*/
+</script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
@@ -270,6 +289,90 @@
                     });
                 }
             }
+        });
+        //
+        //
+        //
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        let reservationcalendar = $('#reservationcalendar').fullCalendar({
+            editable: false,
+            events: SITEURL + "/reservationcalendar",
+            displayEventTime: false,
+            eventRender: function (event, element, view) {
+                if (event.allDay === 'true') {
+                    event.allDay = true;
+                } else {
+                    event.allDay = false;
+                }
+            },
+            selectable: true,
+            selectHelper: true,
+            /*select: function (start, end, allDay) {
+                let title = prompt('Event Title:');
+                if (title) {
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                    $.ajax({
+                        url: SITEURL + "/reservationcalendarAjax",
+                        data: {
+                            start: start,
+                            end: end,
+                            type: 'add'
+                        },
+                        type: "POST",
+                        success: function (data) {
+                            displayMessage("Event Created Successfully");
+                            reservationcalendar.fullCalendar('renderEvent',
+                                {
+                                    id: data.id,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }, true);
+                            reservationcalendar.fullCalendar('unselect');
+                        }
+                    });
+                }
+            },
+            eventDrop: function (event, delta) {
+                var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                $.ajax({
+                    url: SITEURL + '/reservationcalendarAjax',
+                    data: {
+                        title: event.title,
+                        start: start,
+                        end: end,
+                        id: event.id,
+                        type: 'update'
+                    },
+                    type: "POST",
+                    success: function (response) {
+                        displayMessage("Event Updated Successfully");
+                    }
+                });
+            },
+            eventClick: function (event) {
+                let deleteMsg = confirm("Do you really want to delete?");
+                if (deleteMsg) {
+                    jQuery.ajax({
+                        type: "POST",
+                        url: SITEURL + '/reservationcalendarAjax',
+                        data: {
+                            id: event.id,
+                            type: 'delete'
+                        },
+                        success: function (response) {
+                            reservationcalendar.fullCalendar('removeEvents', event.id);
+                            displayMessage("Event Deleted Successfully");
+                        }
+                    });
+                }
+            }*/
         });
     });
 

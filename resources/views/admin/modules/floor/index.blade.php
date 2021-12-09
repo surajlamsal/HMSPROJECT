@@ -53,7 +53,7 @@
                                             <td>{{$item->floornumber}}</td>
                                             <td>
                                                 @can('floor-edit')
-                                                    <a href="{{ route('floor.edit',$item->id) }}"
+                                                        <a href="{{ route('floor.edit',$item->id) }}"
                                                        class="btn btn-primary  btn-sm">Edit</a>
                                                 @endcan
                                             </td>

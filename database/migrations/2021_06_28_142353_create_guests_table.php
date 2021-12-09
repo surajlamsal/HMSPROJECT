@@ -8,7 +8,7 @@
     {
         /**
          * Run the migrations.
-
+         *
          * @return void
          */
         public function up ()
@@ -20,10 +20,9 @@
                 $table->string('email')->unique();
                 $table->string('phone');
                 $table->string('citizenship');
-                $table->integer('roomno');
-                $table->date('checkin');
-                $table->date('checkout');
-
+                $table->integer('roomno')->nullable();
+                $table->date('checkin')->nullable();
+                $table->date('checkout')->nullable();
                 $table->enum('status', ['0', '1'])->default('1');
                 $table->timestamp('created_at')->nullable();
                 $table->unsignedBigInteger('created_by')->nullable();

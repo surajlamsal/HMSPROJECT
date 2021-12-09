@@ -2098,6 +2098,7 @@
      */
 
     var SidebarSearch = /*#__PURE__*/function () {
+
         function SidebarSearch(_element, _options) {
             this.element = _element;
             this.options = $__default['default'].extend({}, Default$4, _options);
@@ -2182,7 +2183,6 @@
             }
         } // Private
         ;
-
         _proto._parseItem = function _parseItem(item, path) {
             var _this3 = this;
 
@@ -2236,7 +2236,6 @@
                         return "<strong class=\"" + _this4.options.highlightClass + "\">" + str + "</strong>";
                     });
                 }
-
                 if (this.options.highlightPath) {
                     path = path.replace(regExp, function (str) {
                         return "<strong class=\"" + _this4.options.highlightClass + "\">" + str + "</strong>";
@@ -2963,6 +2962,7 @@
     exports.Toasts = Toasts;
     exports.TodoList = TodoList;
     exports.Treeview = Treeview;
+
 
     Object.defineProperty(exports, '__esModule', {value: true});
 

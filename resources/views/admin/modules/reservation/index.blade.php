@@ -52,11 +52,16 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($reservation as $item)
+                                        <?php
+                                        $startdate = date("Y-m-d", strtotime("$item->start"));
+                                        $enddate = date("Y-m-d", strtotime("$item->end -1 days"));
+                                        ?>
                                         <tr>
                                             <td>{{$item->reservation_guest->guestname}}</td>
                                             <td>{{$item->reservation_room->roomno}}</td>
-                                            <td>{{$item->in_date}}</td>
-                                            <td>{{$item->out_date}}</td>
+                                            <td>{{$startdate}}</td>
+
+                                            <td>{{$enddate}}</td>
                                             <td>{{$item->numberofguests}}</td>
                                             <td>{{$item->price}}</td>
                                             <td>
@@ -75,7 +80,7 @@
 
                                             <td>
                                                 @can('reservation-edit')
-                                                    <a href="{{url('editreservation/'.$item->id)}}"
+                                                    <a href="{{ route('reservation.edit',$item->id) }}"
                                                        class="btn btn-primary  btn-sm">Edit</a>
                                                 @endcan
                                             </td>

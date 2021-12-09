@@ -41,7 +41,7 @@
                                     <thead>
                                     <tr>
                                         <th>Amenities Name</th>
-                                        <th>Amenities Number</th>
+                                        <th>Amenities Description</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
 
