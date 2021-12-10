@@ -53,13 +53,19 @@
                                         <select class="form-control" id="floor_id" name="floor_id">
                                             @foreach($floor as $items)
 
-                                                <option selected
+                                                <option @if($room->floor_id == $items->id) selected @endif
                                                         value="{{$items->id}}">{{$items->floorname}}</option>
 
                                             @endforeach
 
                                         </select>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="price">Price of Room</label>
+                                        <input value="{{ $room->price }}" type="number" min="0" class="form-control" id="price" name="price" placeholder="Enter Room Price">
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Description</label>
                                         <textarea id="roomdescription" name="roomdescription"

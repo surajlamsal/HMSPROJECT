@@ -46,8 +46,6 @@
                                         <input type="text" class="form-control" id="roomno" name="roomno" placeholder="Enter Room Name">
                                     </div>
 
-
-
                                     <div class="form-group">
                                         <label for="floor_id">Floor</label>
                                         <select  class="form-control" id="floor_id" name="floor_id">
@@ -57,6 +55,12 @@
 
                                         </select>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="price">Price of Room</label>
+                                        <input type="number" min="0" class="form-control" id="price" name="price" placeholder="Enter Room Price">
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Description</label>
                                         <textarea id="roomdescription" name="roomdescription"
