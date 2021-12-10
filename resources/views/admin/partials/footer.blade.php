@@ -182,23 +182,6 @@
     });
     let toastMessage = "{{Session::put('operationMessage', '')}}";
 </script>
-{{--<script>
-    /*$(document).ready(function(){
-
-        $(".room_idroom_id").on('change', function(){
-            var room_idroom_id=$(this).val();
-            alert(room_idroom_id);
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                {{--url:"{{ /*route('reservationroomdetailajax')*/ }}",--}}
-                method:"POST",
-                data:{room_idroom_id:room_idroom_id, _token:_token},
-                success:function(data){
-                    console.log(data);
-                }
-            });
-        });
-    });*/
 </script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

@@ -28,21 +28,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 style="float:right;" class="card-title"><a href="{{url('/archived')}}" class="btn btn-warning  btn-sm ">Go to
-                                                                                                           archive</a>
-                                </h3>
-                                @can('guest-create')
-                                    <h3 style="float:right;" class="card-title"><a href="{{route('guest.create')}}" class="btn btn-success  btn-sm">Add
-                                                                                                                    Guest</a>
-                                    </h3>
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                @endcan
+                                <div style="float: right;">
+                                    <h3 style="" class="card-title"><a href="{{url('/archived')}}"
+                                                                       class="btn btn-warning  btn-sm ">Go to
+                                            archive</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;</h3>
+
+                                    @can('guest-create')
+                                        <h3 style="" class="card-title"><a href="{{route('guest.create')}}"
+                                                                           class="btn btn-success  btn-sm">Add
+                                                Guest</a>
+                                        </h3>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    @endcan
+                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
-
                                     <th>Guest Name</th>
                                     <th>Phone No</th>
                                     <th>Edit</th>

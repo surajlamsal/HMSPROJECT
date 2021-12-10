@@ -54,8 +54,8 @@
                                             <td>{{$item->highprice}}</td>
                                             <td>
                                                 @can('halltype-edit')
-                                              <a href="{{url('edithalltype/'.$item->id)}}"
-                                                   class="btn btn-primary  btn-sm">Edit</a>
+                                                    <a href="{{ route('halltype.edit',$item->id) }}"
+                                                       class="btn btn-primary  btn-sm">Edit</a>
                                                 @endcan
                                              </td>
 
