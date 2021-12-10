@@ -4,6 +4,7 @@ module.exports = {
   mode: 'jit',
   purge: [
     "./resources/views/front/**/*.blade.php",
+    "./resources/views/components/alert.blade.php",
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {

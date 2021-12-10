@@ -35,13 +35,13 @@
                                 <div class="card-body">
                                     <form action="{{ route('find-room') }}" method="get">
 
-                                        <div class="d-flex">
-                                            <div class="form-group">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="form-group mr-2">
                                                 <label for="start_date">Start Date</label>
                                                 <input type="date" name="start_date" id="start_date"
                                                        class="form-control" value="{{ request()->start_date ?? '' }}">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group mr-2">
                                                 <label for="end_date">End Date</label>
                                                 <input type="date" name="end_date" id="end_date" class="form-control"
                                                        value="{{ request()->end_date ?? '' }}">
@@ -74,7 +74,7 @@
                                                     <td>{{ $loop->index+1 }}</td>
                                                     <td>{{ $room->roomno }}</td>
                                                     <td>{{ $room->roomdescription }}</td>
-                                                    <td>{{ $room->floornumber }}</td>
+                                                    <td>{{ $room->floor->floornumber }}</td>
                                                     <td>
                                                         <a href="{{ route('reservation.create', ['room_id' => $room->id, 'start' => $start_date, 'end' => $end_date]) }}"
                                                            class="btn btn-primary">Reserve</a>

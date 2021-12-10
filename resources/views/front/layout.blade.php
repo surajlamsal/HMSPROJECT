@@ -15,7 +15,7 @@
 <header class="bg-white shadow w-full py-2">
     <div class="wrapper flex justify-between items-center">
         <div class="flex">
-            <a href="index.php" class="
+            <a href="{{ route('front.index') }}" class="
               py-5
               px-4
               bg-orange-200

@@ -27,28 +27,29 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
-Route::name('front.')->group(function() {
+Route::name('front.')->group(function () {
     Route::get('/', [FrontController::class, 'index'])->name('index');
     Route::get('/rooms', [FrontController::class, 'rooms'])->name('rooms');
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
     Route::get('/gallery', [FrontController::class, 'gallery'])->name('gallery');
     Route::get('/book', [FrontController::class, 'book'])->name('book');
     Route::get('/booking/{room}', [FrontController::class, 'booking'])->name('booking');
+    Route::post('/booking/{room}', [FrontController::class, 'bookNow'])->name('book.now');
 });
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [FrontController::class, 'home']);
     Route::get('permission', [PermissionController::class, 'index']);
-    Route::get('addpermission', [PermissionController::class, 'addpermission']);//add view
-    Route::post('insertpermission', [PermissionController::class, 'insertpermission']);//store
-    Route::get('editpermission/{id}', [PermissionController::class, 'editpermission']);//editview
-    Route::put('updatepermission/{id}', [PermissionController::class, 'updatepermission']);//store
-    Route::get('deletepermission/{id}', [PermissionController::class, 'deletepermission']);//
+    Route::get('addpermission', [PermissionController::class, 'addpermission']); //add view
+    Route::post('insertpermission', [PermissionController::class, 'insertpermission']); //store
+    Route::get('editpermission/{id}', [PermissionController::class, 'editpermission']); //editview
+    Route::put('updatepermission/{id}', [PermissionController::class, 'updatepermission']); //store
+    Route::get('deletepermission/{id}', [PermissionController::class, 'deletepermission']); //
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
     Route::post('reservationcalendarAjax', [ReservationCalendarController::class, 'ajax']);
     Route::get('sendbasicemail', [MailController::class, 'basic_email']);
-    Route::get('sendhtmlemail','MailController@html_email');
-    Route::get('sendattachmentemail','MailController@attachment_email');
+    Route::get('sendhtmlemail', 'MailController@html_email');
+    Route::get('sendattachmentemail', 'MailController@attachment_email');
 
     Route::post('deleteRecord', [Controller::class, 'deleteRecord']);
     Route::post('checkOutThis', [ReservationController::class, 'checkOutThis']);
