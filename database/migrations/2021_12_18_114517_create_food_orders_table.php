@@ -6,15 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFoodOrdersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('food_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('food_id');
+            $table->foreignId('guest_id');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

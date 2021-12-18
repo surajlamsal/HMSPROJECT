@@ -2,7 +2,6 @@
 @section("content")
 
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -11,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{url('/foodorder')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('/foodorders')}}">Home</a></li>
                             <li class="breadcrumb-item active">FoodOrder</li>
                         </ol>
                     </div>
@@ -41,37 +40,21 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>FoodOrder no</th>
-                                        <th>Meal Type</th>
-                                        <th>FoodOrder Name</th>
-                                        <th>FoodOrder Price</th>
-                                        <th>Edit</th>
-                                        <th>Delete</th>
-
+                                        <th>ID</th>
+                                        <th>Guest</th>
+                                        <th>Order</th>
+                                        <th>Quantity</th>
+                                        <th>Time</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($foodorder as $item)
+                                    @foreach ($orders as $item)
                                         <tr>
                                             <td>{{$item->id}}</td>
-                                            <td>{{$item->mealtype}}</td>
-                                            <td>{{$item->foodordername}}</td>
-                                            <td>{{$item->foodorderprice}}</td>
-                                            
-                                            <td>
-                                                @can('foodorder-edit')
-                                                    <a href="{{route('foodorder.edit',$item->id)}}"
-                                                       class="btn btn-primary  btn-sm">Edit</a>
-                                                @endcan
-                                            </td>
-                                            <td>
-                                                @can('foodorder-delete')
-                                                    <a id="{{$item->id}}" onclick="deleteRecord(this.id,this)"
-                                                       href="javascript:void(0);"
-                                                       class="btn btn-danger  btn-sm">Delete</a>
-                                                @endcan
-                                            </td>
-
+                                            <td>{{ $item->guest->guestname }}</td>
+                                            <td>{{ $item->food->mealtype }} : {{ $item->food->foodname }}</td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->created_at }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

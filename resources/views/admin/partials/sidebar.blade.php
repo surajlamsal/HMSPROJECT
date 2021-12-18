@@ -425,6 +425,13 @@
                         </li>
                     @endcan
 
+                    <li class="nav-item">
+                        <a href="{{url('/foodorders')}}" class="nav-link ">
+                            <i class="fas fa-pizza-slice"></i>
+                            <p>Food Orders</p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

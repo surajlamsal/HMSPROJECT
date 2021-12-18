@@ -17,10 +17,9 @@ class CreateFoodTable extends Migration
             $table->id();
             $table->string('foodname');
             $table->string('foodprice');
-            $table->enum('mealtype', ['Breakfast', 'Lunch','Snacks','Dinner','Supper']);
+            $table->enum('mealtype', ['Breakfast', 'Lunch', 'Snacks', 'Dinner', 'Supper']);
             $table->timestamps();
             $table->enum('deletedstatus', ['0', '1'])->default('0');
-
         });
     }
 
