@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
+use App\Models\FoodOrder;
 use App\Models\Guest;
 use Carbon\Carbon;
 use App\Models\Room;
@@ -18,7 +20,7 @@ class FrontController extends Controller
 
     public function home()
     {
-        if(auth()->user() && auth()->user()->role == "Admin")
+        if (auth()->user() && auth()->user()->role == "Admin")
             return redirect('/admin');
 
         return redirect('/');
@@ -144,7 +146,7 @@ class FrontController extends Controller
 
         // Get Guest
         $guest = Guest::where('user_id', auth()->id())->first();
-        if(!$guest) {
+        if (!$guest) {
             $guest = Guest::where('email', $request->email)->first();
         }
 
@@ -171,19 +173,47 @@ class FrontController extends Controller
 
     public function kitchen()
     {
-        $items = [];
+        // User Need to Book a Room First
+        $user = auth()->user();
+        $guest = Guest::where('user_id', auth()->id())
+            ->orWhere('email', auth()->user()->email)
+            ->first();
+        if (!$guest) {
+            return redirect()->route('front.book')->with('error', 'You need to book an room first!');
+        }
 
-        return view('front.kitchen', compact('items'));
+        // Get Rooms
+        if (!$guest->reservations || $guest->reservations->count() == 0) {
+            return redirect()->route('front.book')->with('error', 'You need to book an room first!');
+        }
+
+        $foods = Food::all();
+
+        return view('front.kitchen', compact('foods'));
     }
 
-    public function orderKitchen(Request $request){
+    public function orderKitchen(Request $request)
+    {
         $request->validate([
-            'food_id' => 'required|exists:foods,id',
+            'food_id' => 'required|exists:food,id',
+            'quantity' => 'required|integer|gte:1',
         ]);
 
         // Food Order Create
+        $user = auth()->user();
+        $guest = Guest::where('user_id', auth()->id())
+            ->orWhere('email', auth()->user()->email)
+            ->first();
+        if (!$guest) {
+            return redirect()->route('front.book')->with('error', 'You need to book an room first!');
+        }
+
+        FoodOrder::create([
+            'guest_id' => $guest->id,
+            'food_id' => $request->food_id,
+            'quantity' => $request->quantity,
+        ]);
 
         return redirect('/kitchen')->with('success', 'Your food item has been ordered! It should arrive to your room shortly!');
     }
 }
-
