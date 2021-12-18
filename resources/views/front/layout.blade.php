@@ -47,7 +47,13 @@
                     <a class="nav-item" href="{{ route('login') }}">Login</a>
                     <a class="nav-item" href="{{ route('register') }}">Sign Up</a>
                     @else
-                    <a class="nav-item" href="/admin">Admin</a>
+                        @if(auth()->user()->role == 'Admin')
+                        <a class="nav-item" href="/admin">Admin</a>
+                        @else
+                            <a class="nav-item" href="/kitchen">Kitchen</a>
+                        @endif
+                        <a class="nav-item" href="/logout">Logout</a>
+
                     @endguest
                 </div>
                 <div class="flex items-center">

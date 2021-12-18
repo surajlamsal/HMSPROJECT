@@ -14,7 +14,7 @@
                 <p class="text-center text-gray-600 text-sm mb-4">Rs. {{ $room->price }}/Day</p>
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input value="{{ old('name') }}" type="text" name="name" id="name" autofocus class="rounded w-full border-gray-300 outline-none focus:border-blue-600">
+                    <input value="{{ old('name') ?? auth()->user()->name }}" type="text" name="name" id="name" autofocus class="rounded w-full border-gray-300 outline-none focus:border-blue-600">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -36,7 +36,7 @@
 
                 <div class="form-group">
                     <label for="email">Your Email Address</label>
-                    <input value="{{ old('email') }}" type="email" name="email" id="email" class="rounded w-full border-gray-300 outline-none focus:border-blue-600">
+                    <input value="{{ old('email') ?? auth()->user()->email }}" type="email" name="email" id="email" class="rounded w-full border-gray-300 outline-none focus:border-blue-600">
                 </div>
 
                 <div class="form-group">

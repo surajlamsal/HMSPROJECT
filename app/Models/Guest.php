@@ -13,6 +13,7 @@
         protected $table = 'guests';
 
         protected $fillable = [
+            'user_id',
             'guestname',
             'address',
             'email',

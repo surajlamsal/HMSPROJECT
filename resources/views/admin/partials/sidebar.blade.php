@@ -284,6 +284,8 @@
 
                                     </li>
                                 @endcan
+
+
                             </ul>
                         </li>
                     @endif
@@ -413,6 +415,15 @@
                                 <p>Find Room</p>
                             </a>
                         </li>
+
+                    @can('food-list')
+                        <li class="nav-item">
+                            <a href="{{url('/food')}}" class="nav-link ">
+                                <i class="fas fa-pizza-slice"></i>
+                                <p>List Of Food</p>
+                            </a>
+                        </li>
+                    @endcan
 
                 </ul>
             </nav>

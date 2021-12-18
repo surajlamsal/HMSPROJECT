@@ -15,7 +15,7 @@
         {
             Schema::create('reservations', function (Blueprint $table) {
                 $table->id();
-                $table->integer('guest_id');
+                $table->foreignId('guest_id');
                 $table->integer('room_id');
                 $table->datetime('start');
                 $table->datetime('end');

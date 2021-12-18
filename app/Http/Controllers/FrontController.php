@@ -18,7 +18,10 @@ class FrontController extends Controller
 
     public function home()
     {
-        return redirect('/admin');
+        if(auth()->user() && auth()->user()->role == "Admin")
+            return redirect('/admin');
+
+        return redirect('/');
     }
 
     public function rooms(Request $request)
@@ -129,17 +132,22 @@ class FrontController extends Controller
 
     public function bookNow(Request $request, Room $room)
     {
+        $this->middleware('auth');
+
         $request->validate([
             'name' => ['required'],
             'start_date' => ['required', 'date', 'after:' . now()->startOfDay()],
             'end_date' => ['required', 'date', 'after:start_date'],
             'guest' => ['required', 'integer', 'gte:1'],
-            'email' => ['required', 'email'],
             'phone' => ['required', 'integer', 'digits:10'],
         ]);
 
         // Get Guest
-        $guest = Guest::where('email', $request->email)->first();
+        $guest = Guest::where('user_id', auth()->id())->first();
+        if(!$guest) {
+            $guest = Guest::where('email', $request->email)->first();
+        }
+
         if (!$guest) {
             $guest = Guest::create([
                 'guestname' => $request->name,
@@ -151,8 +159,8 @@ class FrontController extends Controller
         Reservation::create([
             'room_id' => $room->id,
             'guest_id' => $guest->id,
-            'start'   => Carbon::parse($request->start_date)->format('Y-m-d'),
-            'end'     => Carbon::parse($request->start_date)->format('Y-m-d'),
+            'start'   => $request->start_date,
+            'end'     => Carbon::parse($request->end_date)->addDays(1)->format('Y-m-d'),
             'numberofguests' => $request->guest,
             'price' => $room->price,
         ]);
@@ -160,4 +168,22 @@ class FrontController extends Controller
         return redirect()->route('front.book')
             ->with('success', 'Your room has been booked successfully!');
     }
+
+    public function kitchen()
+    {
+        $items = [];
+
+        return view('front.kitchen', compact('items'));
+    }
+
+    public function orderKitchen(Request $request){
+        $request->validate([
+            'food_id' => 'required|exists:foods,id',
+        ]);
+
+        // Food Order Create
+
+        return redirect('/kitchen')->with('success', 'Your food item has been ordered! It should arrive to your room shortly!');
+    }
 }
+

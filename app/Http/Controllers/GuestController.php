@@ -5,14 +5,12 @@
     use App\Models\Guest;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Session;
 
 // use Carbon\Carbon;
     // use Illuminate\Http\Request;
     // use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Session;
-
-
     class GuestController extends Controller
     {
         public function __construct ()
@@ -22,10 +20,10 @@
             $this->middleware('permission:guest-edit', ['only' => ['edit', 'update']]);
             $this->middleware('permission:guest-delete', ['only' => ['destroy']]);
         }
+
         public function index ()
         {
             $base_table = (new Guest())->getTable();
-
             $guest = Guest::select('*')
                           ->where([
                                       ['deletedstatus', '=', '0']
@@ -55,7 +53,6 @@
         public function store (Request $request)
         {
             $user = Auth::user();
-
             $guest = new Guest;
             $guest->guestname = $request->input('guestname');
             $guest->address = $request->input('address');
@@ -69,7 +66,6 @@
             $guest->created_at = Carbon::now()->toDateTimeString();
             $guest->save();
             Session::put('operationMessage', 'insertSuccess');
-
             return redirect('/guest');
         }
 
@@ -82,7 +78,6 @@
         public function update (Request $request, $id)
         {
             $user = Auth::user();
-
             $guest = Guest::find($id);
             $guest->guestname = $request->input('guestname');
             $guest->address = $request->input('address');
@@ -96,28 +91,33 @@
             $guest->updated_at = Carbon::now()->toDateTimeString();
             $guest->update();
             Session::put('operationMessage', 'updateSuccess');
-
             return redirect('/guest');
         }
 
 
-      public function restore ($id)
-         {
-              $guest = Guest::select('*')
+        public function restore ($id)
+        {
+            /*$guest = Guest::select('*')
                           ->where([
-                                      ['deletedstatus', '=', '0']
+                                      ['deletedstatus', '=', '0'],
+                                      ['id', '=', $id],
                                   ])
-                          ->get();
-            $data = compact('guest');
-             return redirect('/guest')->with('status', 'Restored succesfully');
-         }
+                          ->get();*/
+            $guest = Guest::find($id);
+            $guest->deletedstatus = "0";
+            $guest->update();
+            return redirect('/guest')->with('status', 'Restored succesfully');
+        }
 
-        /* public function forceDelete ($id)
-         {
-             $guest = Guest::withTrashed()->find($id);
-             if (!is_null($guest)) {
-                 $guest->forceDelete();
-             }
-             return redirect()->back()->with('status', 'Deleted succesfully');
-         }*/
+        public function forceDelete ($id)
+        {
+            $guest = Guest::find($id);
+            $guest->delete();
+            return redirect('/guest')->with('status', 'Deleted permanently succesfully');
+            /*$guest = Guest::withTrashed()->find($id);
+            if (!is_null($guest)) {
+                $guest->forceDelete();
+            }
+            return redirect()->back()->with('status', 'Deleted succesfully');*/
+        }
     }

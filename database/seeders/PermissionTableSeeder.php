@@ -66,6 +66,10 @@
 				'halltype-create',
 				'halltype-edit',
 				'halltype-delete',
+                'food-list',
+                'food-create',
+                'food-edit',
+                'food-delete',
 			];
 			foreach ($permissions as $permission) {
 				Permission::create(['name' => $permission]);

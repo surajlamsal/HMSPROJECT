@@ -1,7 +1,6 @@
 @extends("admin.layouts.master")
 @section("content")
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -23,26 +22,32 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Floor</h3>
+                                <h3 class="card-title">Edit Floor</h3>
                             </div>
-                            <form action="{{route('floor.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('floor.update',$floor->id)}}" method="post"
+                                  enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
+                                <input type="hidden" value="{{$floor->id}}" name="id">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="floorname">Name</label>
-                                        <input type="text" class="form-control" id="floorname" name="floorname"
-                                               placeholder="Enter Floor Name">
+                                        <input value={{$floor->floorname}} type="text" class="form-control"
+                                               id="floorname" name="floorname" placeholder="Enter Floor Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="floornumber">Floor Number</label>
-                                        <input type="text" class="form-control" id="floornumber" name="floornumber"
-                                               placeholder="Enter Floor Number">
+                                        <input value={{$floor->floornumber}} type="text" class="form-control"
+                                               id="floornumber" name="floornumber" placeholder="Enter Floor Number">
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
                                         <textarea id="floordescription" name="floordescription" class="form-control"
-                                                  rows="3" placeholder="Enter Floor Description"></textarea>
+                                                  rows="3"
+                                                  placeholder="Enter Floor Description">{{$floor->floordescription}}</textarea>
                                     </div>
+
+
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -55,4 +60,3 @@
         </section>
     </div>
 @endsection
-

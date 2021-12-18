@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         <label for="numberofguests">Number Of Guests:</label>
                                         <input type="text" class="form-control" id="numberofguests"
-                                               name="numberofguests" placeholder="Enter  numberofguests">
+                                               name="numberofguests" placeholder="Enter number of guests">
                                     </div>
                                     <div class="form-group">
                                         <label for="price">Price:</label>

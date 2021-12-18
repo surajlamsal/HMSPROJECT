@@ -19,11 +19,11 @@
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
+                $table->string('role')->default('User');
 
                 $table->string('dob')->nullable();
                 $table->string('phone')->nullable();
                 $table->string('department')->nullable();
-                $table->string('role')->nullable();
                 $table->string('designation')->nullable();
                 $table->string('address')->nullable();
                 $table->string('employeeimage')->nullable();

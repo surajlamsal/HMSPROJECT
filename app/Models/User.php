@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Shift::class, 'shift', 'id');
     }*/
+
+    public function guest()
+    {
+        return $this->belongsTo(Guest::class);
+    }
 }
